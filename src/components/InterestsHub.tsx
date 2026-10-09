@@ -46,10 +46,6 @@ export const InterestsHub: React.FC<InterestsHubProps> = ({
       {/* Page Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-emerald-100">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-[#059669] text-xs font-bold uppercase tracking-wider mb-2">
-            <Heart className="w-3.5 h-3.5 fill-[#059669]" />
-            <span>Connection Center</span>
-          </div>
           <h1 className="font-serif text-3xl sm:text-4xl font-bold text-[#0F172A]">
             Interests & Connections Hub
           </h1>

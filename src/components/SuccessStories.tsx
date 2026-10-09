@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heart, Quote, MapPin, Calendar, CheckCircle2 } from 'lucide-react';
+import { Quote, MapPin, Calendar, CheckCircle2 } from 'lucide-react';
 
 export const SuccessStories: React.FC = () => {
   const stories = [
@@ -35,11 +35,6 @@ export const SuccessStories: React.FC = () => {
         
         {/* Section Header */}
         <div className="max-w-2xl mx-auto space-y-2.5">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-emerald-100/80 border border-emerald-200 text-[#047857] text-xs font-bold uppercase tracking-wider">
-            <Heart className="w-3.5 h-3.5 fill-[#059669] text-[#059669]" />
-            <span>Real Couples • Real Happiness</span>
-          </div>
-
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#064E3B] tracking-tight">
             Happy Couples, Beautiful Beginnings
           </h2>

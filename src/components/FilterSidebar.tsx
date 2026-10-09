@@ -1,5 +1,5 @@
 import React from 'react';
-import { SlidersHorizontal, RotateCcw, ShieldCheck, Compass } from 'lucide-react';
+import { SlidersHorizontal, RotateCcw, ShieldCheck, Compass, X } from 'lucide-react';
 
 export interface FilterState {
   searchQuery: string;
@@ -23,6 +23,7 @@ interface FilterSidebarProps {
   onResetFilters: () => void;
   totalMatches: number;
   totalProfiles: number;
+  onClose?: () => void;
 }
 
 export const FilterSidebar: React.FC<FilterSidebarProps> = ({
@@ -30,7 +31,8 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
   setFilters,
   onResetFilters,
   totalMatches,
-  totalProfiles
+  totalProfiles,
+  onClose
 }) => {
   const formatHeight = (inches: number) => {
     const feet = Math.floor(inches / 12);
@@ -116,15 +118,28 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
             </div>
           </div>
 
-          <button
-            type="button"
-            onClick={onResetFilters}
-            className="flex items-center gap-1 text-xs font-semibold text-emerald-700 hover:text-emerald-900 transition-colors p-1.5 hover:bg-emerald-50 rounded-lg cursor-pointer"
-            title="Reset all filters"
-          >
-            <RotateCcw className="w-3.5 h-3.5" />
-            <span>Reset</span>
-          </button>
+          <div className="flex items-center gap-1.5">
+            <button
+              type="button"
+              onClick={onResetFilters}
+              className="flex items-center gap-1 text-xs font-semibold text-emerald-700 hover:text-emerald-900 transition-colors p-1.5 hover:bg-emerald-50 rounded-lg cursor-pointer"
+              title="Reset all filters"
+            >
+              <RotateCcw className="w-3.5 h-3.5" />
+              <span>Reset</span>
+            </button>
+            {onClose && (
+              <button
+                type="button"
+                onClick={onClose}
+                className="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition-colors cursor-pointer"
+                title="Hide filter panel"
+                aria-label="Hide filter panel"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            )}
+          </div>
         </div>
 
         {/* Search by Keyword */}

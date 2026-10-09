@@ -4,7 +4,8 @@ import {
   CheckCircle2, 
   RotateCcw, 
   Search, 
-  ArrowUpDown
+  ArrowUpDown,
+  SlidersHorizontal
 } from 'lucide-react';
 import { MOCK_PROFILES, CURRENT_USER } from './data/mockProfiles';
 import type { MatrimonialProfile } from './data/mockProfiles';
@@ -55,9 +56,26 @@ function Home() {
   };
 
   const [filters, setFilters] = useState<FilterState>(initialFilters);
+  const [isFilterOpen, setIsFilterOpen] = useState(true);
   const [sortBy, setSortBy] = useState<'compatibility' | 'ageAsc' | 'ageDesc'>('compatibility');
   const [passedProfileIds, setPassedProfileIds] = useState<string[]>([]);
   const [notificationToast, setNotificationToast] = useState<string | null>(null);
+
+  const activeFiltersCount = useMemo(() => {
+    let count = 0;
+    if (filters.searchQuery.trim() !== '') count++;
+    if (filters.gender !== 'All') count++;
+    if (filters.minAge !== initialFilters.minAge || filters.maxAge !== initialFilters.maxAge) count++;
+    if (filters.minHeightInches !== initialFilters.minHeightInches || filters.maxHeightInches !== initialFilters.maxHeightInches) count++;
+    if (filters.maritalStatuses.length > 0) count += filters.maritalStatuses.length;
+    if (filters.educationList.length > 0) count += filters.educationList.length;
+    if (filters.occupationSectors.length > 0) count += filters.occupationSectors.length;
+    if (filters.incomeBrackets.length > 0) count += filters.incomeBrackets.length;
+    if (filters.manglikOnly) count++;
+    if (filters.verifiedOnly) count++;
+    if (filters.dietList.length > 0) count += filters.dietList.length;
+    return count;
+  }, [filters, initialFilters]);
 
   const discoverySectionRef = useRef<HTMLDivElement>(null);
 
@@ -287,8 +305,29 @@ function Home() {
                   </p>
                 </div>
 
-                {/* Sort dropdown and Undo Pass */}
-                <div className="flex items-center gap-3">
+                {/* Controls Bar: Filter Toggle, Undo Pass, and Sort */}
+                <div className="flex items-center flex-wrap gap-2.5 sm:gap-3">
+                  {/* Button to toggle side panel */}
+                  <button
+                    type="button"
+                    onClick={() => setIsFilterOpen((prev) => !prev)}
+                    className={`inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold border transition-all cursor-pointer shadow-xs ${
+                      isFilterOpen
+                        ? 'bg-emerald-50 text-emerald-800 border-emerald-300 hover:bg-emerald-100'
+                        : 'bg-white text-slate-700 border-slate-200 hover:border-emerald-300 hover:text-emerald-700 hover:bg-emerald-50/50'
+                    }`}
+                    title={isFilterOpen ? 'Hide filter sidebar' : 'Show filter sidebar'}
+                    aria-label={isFilterOpen ? 'Hide filter sidebar' : 'Show filter sidebar'}
+                  >
+                    <SlidersHorizontal className="w-3.5 h-3.5 text-emerald-600" />
+                    <span>{isFilterOpen ? 'Hide Filters' : 'Show Filters'}</span>
+                    {activeFiltersCount > 0 && (
+                      <span className="w-5 h-5 rounded-full bg-[#059669] text-white text-[10px] font-bold flex items-center justify-center">
+                        {activeFiltersCount}
+                      </span>
+                    )}
+                  </button>
+
                   {passedProfileIds.length > 0 && (
                     <button
                       type="button"
@@ -315,20 +354,52 @@ function Home() {
                 </div>
               </div>
 
-              {/* Two-Column Layout: Left Sticky Sidebar + Right Responsive Card Grid */}
+              {/* Two-Column Layout: Left Sticky Sidebar (collapsible) + Right Responsive Card Grid */}
               <div className="flex flex-col lg:flex-row items-start gap-8">
                 
                 {/* Left Sticky Filter Sidebar */}
-                <FilterSidebar
-                  filters={filters}
-                  setFilters={setFilters}
-                  onResetFilters={handleResetFilters}
-                  totalMatches={filteredProfiles.length}
-                  totalProfiles={profiles.length}
-                />
+                {isFilterOpen && (
+                  <FilterSidebar
+                    filters={filters}
+                    setFilters={setFilters}
+                    onResetFilters={handleResetFilters}
+                    totalMatches={filteredProfiles.length}
+                    totalProfiles={profiles.length}
+                    onClose={() => setIsFilterOpen(false)}
+                  />
+                )}
 
                 {/* Right Responsive Card Grid */}
                 <div className="flex-1 w-full">
+                  {/* Active filters pill bar when sidebar is hidden */}
+                  {!isFilterOpen && activeFiltersCount > 0 && (
+                    <div className="mb-6 p-3 sm:p-3.5 bg-emerald-50/70 border border-emerald-200/80 rounded-2xl flex flex-wrap items-center justify-between gap-3 text-xs">
+                      <div className="flex items-center gap-2">
+                        <SlidersHorizontal className="w-4 h-4 text-[#059669]" />
+                        <span className="font-semibold text-emerald-950">
+                          {activeFiltersCount} filter{activeFiltersCount > 1 ? 's' : ''} applied ({filteredProfiles.length} matching)
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <button
+                          type="button"
+                          onClick={() => setIsFilterOpen(true)}
+                          className="font-bold text-emerald-700 hover:text-emerald-900 underline underline-offset-2 cursor-pointer"
+                        >
+                          Modify Filters
+                        </button>
+                        <span className="text-slate-300">|</span>
+                        <button
+                          type="button"
+                          onClick={handleResetFilters}
+                          className="font-medium text-slate-600 hover:text-slate-900 cursor-pointer"
+                        >
+                          Reset
+                        </button>
+                      </div>
+                    </div>
+                  )}
+
                   {filteredProfiles.length === 0 ? (
                     <div className="py-20 px-8 text-center bg-white rounded-3xl border border-emerald-100 shadow-sm space-y-4">
                       <div className="w-16 h-16 rounded-full bg-emerald-50 text-[#059669] flex items-center justify-center mx-auto">
@@ -340,17 +411,29 @@ function Home() {
                       <p className="text-xs sm:text-sm text-slate-500 max-w-md mx-auto">
                         We couldn't find profiles matching all your specific criteria. Try broadening your age, height, or profession filters.
                       </p>
-                      <button
-                        type="button"
-                        onClick={handleResetFilters}
-                        className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[#059669] text-white text-xs font-bold shadow-md hover:bg-[#047857] transition-all cursor-pointer"
-                      >
-                        <RotateCcw className="w-3.5 h-3.5" />
-                        <span>Clear All Filters</span>
-                      </button>
+                      <div className="flex items-center justify-center gap-3">
+                        <button
+                          type="button"
+                          onClick={handleResetFilters}
+                          className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[#059669] text-white text-xs font-bold shadow-md hover:bg-[#047857] transition-all cursor-pointer"
+                        >
+                          <RotateCcw className="w-3.5 h-3.5" />
+                          <span>Clear All Filters</span>
+                        </button>
+                        {!isFilterOpen && (
+                          <button
+                            type="button"
+                            onClick={() => setIsFilterOpen(true)}
+                            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-700 text-xs font-bold hover:bg-slate-50 transition-all cursor-pointer"
+                          >
+                            <SlidersHorizontal className="w-3.5 h-3.5 text-emerald-600" />
+                            <span>Show Filters</span>
+                          </button>
+                        )}
+                      </div>
                     </div>
                   ) : (
-                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                    <div className={`grid grid-cols-1 md:grid-cols-2 ${isFilterOpen ? 'xl:grid-cols-3' : 'lg:grid-cols-3 xl:grid-cols-4'} gap-6`}>
                       {filteredProfiles.map((profile) => (
                         <ProfileCard
                           key={profile.id}
