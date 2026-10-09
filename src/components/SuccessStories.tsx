@@ -8,7 +8,7 @@ export const SuccessStories: React.FC = () => {
       location: 'Kochi & Bengaluru',
       date: 'Married January 2024',
       quote: 'We connected on U2ME when our parents found complete alignment in our family values and Nakshatra. Within 6 months of meaningful conversations, we knew we had found our lifelong home in each other.',
-      photo: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=900&q=80',
+      photo: '/profiles/story_priya_rahul.jpg',
       tag: 'Architect & Cardiologist'
     },
     {
@@ -16,7 +16,7 @@ export const SuccessStories: React.FC = () => {
       location: 'Mumbai & New York',
       date: 'Married November 2023',
       quote: 'Navigating long-distance matrimonial search was overwhelming until we used U2ME. The verified credentials gave our families immense confidence, and our initial chat turned into a forever bond.',
-      photo: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80',
+      photo: '/profiles/story_siddharth_pooja.jpg',
       tag: 'Quant Analyst & UX Director'
     },
     {
@@ -24,7 +24,7 @@ export const SuccessStories: React.FC = () => {
       location: 'Chandigarh & Delhi',
       date: 'Married February 2024',
       quote: 'No awkward matchmaking tropes—just authentic people who value equal partnership and shared dreams. U2ME transformed how our families approached this beautiful milestone.',
-      photo: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=80',
+      photo: '/profiles/story_aditya_neha.jpg',
       tag: 'Tech Founder & Civil Officer'
     }
   ];

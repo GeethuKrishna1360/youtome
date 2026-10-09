@@ -162,9 +162,7 @@ export const CURRENT_USER: MatrimonialProfile = {
   compatibilityScore: 100,
   tags: ['M.Des (NID)', 'Product Design Lead', 'Carnatic Flute', 'Bengaluru'],
   photos: [
-    'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=80',
-    'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=900&q=80',
-    'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80'
+    '/profiles/user_ananya.jpg'
   ],
   interestStatus: 'none',
   lastActive: 'Online now',
@@ -245,9 +243,7 @@ export const MOCK_PROFILES: MatrimonialProfile[] = [
     compatibilityScore: 96,
     tags: ['Doctor (DM)', 'AIIMS Alum', 'Non-Smoker', 'Vegetarian', 'Bengaluru'],
     photos: [
-      'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80'
+      '/profiles/prof_01_siddharth.jpg'
     ],
     isShortlisted: true,
     interestStatus: 'none',
@@ -326,8 +322,7 @@ export const MOCK_PROFILES: MatrimonialProfile[] = [
     compatibilityScore: 94,
     tags: ['IIT Bombay Alum', 'UX Architect', 'Classical Dancer', 'Vegetarian'],
     photos: [
-      'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=900&q=80'
+      '/profiles/prof_02_ananya.jpg'
     ],
     isShortlisted: false,
     interestStatus: 'none',
@@ -406,8 +401,7 @@ export const MOCK_PROFILES: MatrimonialProfile[] = [
     compatibilityScore: 92,
     tags: ['BITS & CMU Alum', 'Quant Strategist', 'Marathoner', 'Strict Vegetarian'],
     photos: [
-      'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=900&q=80'
+      '/profiles/prof_03_arjun.jpg'
     ],
     isShortlisted: true,
     interestStatus: 'sent',
@@ -487,8 +481,7 @@ export const MOCK_PROFILES: MatrimonialProfile[] = [
     compatibilityScore: 91,
     tags: ['Civil Services (IRS)', 'St. Stephens Alum', 'Urdu Literature', 'Tennis Player'],
     photos: [
-      'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=900&q=80'
+      '/profiles/prof_04_zoya.jpg'
     ],
     isShortlisted: false,
     interestStatus: 'none',
@@ -567,8 +560,7 @@ export const MOCK_PROFILES: MatrimonialProfile[] = [
     compatibilityScore: 89,
     tags: ['IIT & ISB Alum', 'Tech Founder', 'Pilot License', 'Chandigarh'],
     photos: [
-      'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=900&q=80'
+      '/profiles/prof_05_karanvir.jpg'
     ],
     isShortlisted: false,
     interestStatus: 'none',
@@ -647,8 +639,7 @@ export const MOCK_PROFILES: MatrimonialProfile[] = [
     compatibilityScore: 93,
     tags: ['CA Ranker (AIR 14)', 'VP Private Equity', 'Scuba Diver', 'Vegetarian'],
     photos: [
-      'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1548142813-c348350df52b?auto=format&fit=crop&w=900&q=80'
+      '/profiles/prof_06_tanvi.jpg'
     ],
     isShortlisted: true,
     interestStatus: 'received',
@@ -727,8 +718,7 @@ export const MOCK_PROFILES: MatrimonialProfile[] = [
     compatibilityScore: 90,
     tags: ['IIT Madras Alum', 'Naval Architect', 'Sailor', 'Kochi Native'],
     photos: [
-      'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=900&q=80'
+      '/profiles/prof_07_nikhil.jpg'
     ],
     isShortlisted: false,
     interestStatus: 'none',
@@ -807,8 +797,7 @@ export const MOCK_PROFILES: MatrimonialProfile[] = [
     compatibilityScore: 95,
     tags: ['MD Dermatologist', 'Kuchipudi Dancer', 'Jubilee Hills', 'Osmania Alum'],
     photos: [
-      'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=900&q=80'
+      '/profiles/prof_08_pallavi.jpg'
     ],
     isShortlisted: true,
     interestStatus: 'accepted',
@@ -887,8 +876,7 @@ export const MOCK_PROFILES: MatrimonialProfile[] = [
     compatibilityScore: 88,
     tags: ['IISc Ph.D.', 'AI Director', 'Vinyl Collector', 'Divorced / Second Inning'],
     photos: [
-      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=900&q=80'
+      '/profiles/prof_09_vikramaditya.jpg'
     ],
     isShortlisted: false,
     interestStatus: 'none',
@@ -967,8 +955,7 @@ export const MOCK_PROFILES: MatrimonialProfile[] = [
     compatibilityScore: 97,
     tags: ['CFA Charterholder', 'ESG Manager', 'Yoga Practitioner', 'Vegetarian'],
     photos: [
-      'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=80'
+      '/profiles/prof_10_samyuktha.jpg'
     ],
     isShortlisted: true,
     interestStatus: 'none',
